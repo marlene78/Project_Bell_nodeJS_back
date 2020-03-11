@@ -1,0 +1,28 @@
+version: '3.3'
+services:
+  node:
+    container_name: project_back
+    image: 'node:latest'
+    working_dir: /home/back/app
+    command:
+      - /bin/sh
+      - '-c'
+      - 'npm install && npm start'
+    ports:
+      - '3000:3000'
+    volumes:
+      - './src:/home/back/app'
+    links:
+      - mongo
+    networks:
+      - my-network-2
+  mongo:
+    container_name: project_back_mongo
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - my-network-2
+networks:
+  my-network-2:
+    driver: bridge
