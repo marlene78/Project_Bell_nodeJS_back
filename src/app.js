@@ -1,6 +1,13 @@
 const express = require('express');
 const server = express();
 
+
+const cors = require('cors');
+server.use(cors({
+    AccessControlAllowOrigin: "*"
+}));
+
+
 const hostname = '0.0.0.0';
 const port = 3000;
 

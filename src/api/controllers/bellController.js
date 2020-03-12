@@ -22,16 +22,17 @@ exports.list_all_bell = (req, res) => {
  */
 exports.create_a_bell = (req, res) => {
   let new_bell = new Bell(req.body);
-
+  
   new_bell.save((error, bell) => {
     if(error){
       res.status(500);
       console.log(error);
-      res.json({message: "Erreur serveur."})
+      res.json({message: "Erreur serveur." + error})
     }
     else{
       res.status(201);
       res.json(bell);
+     
     }
   })
 }
@@ -44,7 +45,7 @@ exports.create_a_bell = (req, res) => {
  */
 exports.get_a_bell = (req, res) => {
 
-  Bell.findById(req.params.bel_id, (error , post) =>{
+  Bell.findById(req.params.bell_id, (error , bell) =>{
     if(error){
       res.status(500);
       console.log(error);
@@ -53,6 +54,7 @@ exports.get_a_bell = (req, res) => {
     else{
       res.status(201);
       res.json(bell);
+      
     }
   })
 }

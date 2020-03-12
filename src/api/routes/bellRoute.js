@@ -1,6 +1,6 @@
 module.exports = (server) => {
     const bellController = require('../controllers/bellController');
-  
+    
   
     server.route('/bell')
     .get(bellController.list_all_bell)
