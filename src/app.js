@@ -12,7 +12,7 @@ const hostname = '0.0.0.0';
 const port = 3000;
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://mongo/projet_bell');
+mongoose.connect('mongodb://mongo/projet_sonnerie');
 
 const bodyParser = require('body-parser');
 server.use(bodyParser.urlencoded());

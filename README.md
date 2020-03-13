@@ -26,5 +26,6 @@ Création d'une interface de vote pour la sonnerie de l'école IPSSI
 - cors": 2.8.5
 
 # Auteurs
-https://github.com/marlene78/Project_Bell_nodeJS_back/contirubors
+https://github.com/marlene78/Project_Bell_nodeJS_back/Anta221
+https://github.com/marlene78/Project_Bell_nodeJS_back/marlene78
 
