@@ -4,7 +4,7 @@ const Bell = require('../models/bellModel');
  * Liste des sonneries
  */
 exports.list_all_bell = (req, res) => {
-  Bell.find({}, (error, bells) => {
+  Bell.find({bell_id: req.params.bell_id}, (error, bells) => {
     if(error){
       res.status(500);
       console.log(error);
@@ -17,6 +17,7 @@ exports.list_all_bell = (req, res) => {
   })
 }
 
+
 /**
  * Création d'une sonnerie
  */
@@ -27,7 +28,7 @@ exports.create_a_bell = (req, res) => {
     if(error){
       res.status(500);
       console.log(error);
-      res.json({message: "Erreur serveur." + error})
+      res.json({message: "Erreur serveur."})
     }
     else{
       res.status(201);

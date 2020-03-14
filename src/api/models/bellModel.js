@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 let bellSchema = new Schema({
+  
   name: {
     type: String,
     required: "Le titre est requis"
