@@ -17,6 +17,27 @@ exports.list_all_bell = (req, res) => {
   })
 }
 
+/**
+ * Update des votes
+ */
+
+exports.update_a_bell = (req, res) => {
+  Bell.update(
+      {"_id" : req.params.bell_id}, 
+      { $set: { note: req.body.note } },  (error, bell)  => {
+        if(error){
+          res.status(500);
+          console.log(error);
+          res.json({message: "Erreur serveur."})
+        }
+      else{
+        res.status(201);
+        res.json(bell);
+      }
+  })
+}
+
+
 
 /**
  * Création d'une sonnerie

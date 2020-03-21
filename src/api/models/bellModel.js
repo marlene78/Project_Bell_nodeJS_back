@@ -10,6 +10,10 @@ let bellSchema = new Schema({
   lien: {
     type: String,
     required: "Le lien est requis"
+  },
+  note: {
+    type: Number,
+    default: 0
   }
 });
 
