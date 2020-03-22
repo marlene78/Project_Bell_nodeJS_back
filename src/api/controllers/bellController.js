@@ -24,7 +24,7 @@ exports.list_all_bell = (req, res) => {
 exports.update_a_bell = (req, res) => {
   Bell.update(
       {"_id" : req.params.bell_id}, 
-      { $set: { note: req.body.note } },  (error, bell)  => {
+      { $inc: { note: 1 } },  (error, bell)  => {
         if(error){
           res.status(500);
           console.log(error);
