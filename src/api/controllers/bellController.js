@@ -22,19 +22,20 @@ exports.list_all_bell = (req, res) => {
  */
 
 exports.update_a_bell = (req, res) => {
+  
   Bell.update(
-      {"_id" : req.params.bell_id}, 
-      { $inc: { note: 1 } },  (error, bell)  => {
-        if(error){
-          res.status(500);
-          console.log(error);
-          res.json({message: "Erreur serveur."})
-        }
-      else{
-        res.status(201);
-        res.json(bell);
+    {"_id" : req.params.bell_id}, 
+    { $inc: { note: 1 } },  (error, bell)  => {
+      if(error){
+        res.status(500);
+        res.json({message: "Erreur serveur."})
+      }else{
+          res.status(201);
+          res.json(bell);
       }
   })
+  
+
 }
 
 
@@ -43,20 +44,27 @@ exports.update_a_bell = (req, res) => {
  * Création d'une sonnerie
  */
 exports.create_a_bell = (req, res) => {
-  let new_bell = new Bell(req.body);
-  
-  new_bell.save((error, bell) => {
-    if(error){
-      res.status(500);
-      console.log(error);
-      res.json({message: "Erreur serveur."})
-    }
-    else{
-      res.status(201);
-      res.json(bell);
-     
-    }
-  })
+
+  let regex = new RegExp( '/(http[s]?:\/\/)?[^\s(["<,>]*\.[^\s[",><]*/');
+  let url = regex.test(req.body.lien);
+  if(url == true){
+      
+    let new_bell = new Bell(req.body);
+      
+    new_bell.save((error, bell) => {
+        if(error){
+          res.status(500);
+          console.log(error);
+          res.json({message: "Erreur serveur."})
+        }else{
+          res.status(201);
+          res.json(bell);   
+        
+        }
+      })
+  }else{
+    res.json({message: "Url non valide"})
+  }
 }
 
 
